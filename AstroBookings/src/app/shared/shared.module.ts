@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ParametricLinkComponent } from './componentes/parametric-link/parametric-link.component';
+import { UIModule } from './ui/ui.module';
 
 
 
@@ -9,7 +10,8 @@ import { ParametricLinkComponent } from './componentes/parametric-link/parametri
     ParametricLinkComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    UIModule
   ],
   exports:[
     ParametricLinkComponent

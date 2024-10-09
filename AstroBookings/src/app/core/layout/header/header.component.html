@@ -1,13 +1,15 @@
 
-<nav>
-  <ul>
-    <li>
-      <span>{{ title }}</span>
-    </li>
-  </ul>
-  <ul>
-    <li *ngFor="let link of links; let i = index">
-      <app-parametric-link [linkUrl]="link.linkUrl" [linkText]="link.linkText"></app-parametric-link>
-    </li>
-  </ul>
-</nav>
+<header>
+  <nav>
+    <ul>
+      <li>
+        <span>{{ title }}</span>
+      </li>
+    </ul>
+    <ul>
+      <li *ngFor="let link of links; let i = index">
+        <app-parametric-link [linkUrl]="link.linkUrl" [linkText]="link.linkText"></app-parametric-link>
+      </li>
+    </ul>
+  </nav>
+</header>

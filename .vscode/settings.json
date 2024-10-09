@@ -1,3 +1,14 @@
 {
-  "cSpell.words": ["Basalo", "Montrel"]
+  "cSpell.words": ["Basalo", "Montrel"],
+  "material-icon-theme.folders.associations": {
+    "*dto.ts":"raml",
+    "*type.ts":"raml",
+    "*enum.ts":"raml",
+    "*.module.ts": "merlin",
+    "*.atom.ts": "angular-component",
+    "*.widget.ts": "angular-guard",
+    "*.service.ts": "sas",
+
+
+  }
 }
