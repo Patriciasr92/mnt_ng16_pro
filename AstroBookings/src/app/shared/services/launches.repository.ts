@@ -61,7 +61,7 @@ export class LaunchesMemoryRepository implements LaunchesAbstractRepository {
  * @requires HttpClient
  */
 export class LaunchesRestRepository extends LaunchesAbstractRepository {
-  private readonly apiUrl = `${environment.apiUrl}/launches`;
+  private readonly baseUrl = `${environment.apiUrl}/launches`;
   constructor(private httpClient: HttpClient) {
     super();
   }
@@ -71,6 +71,12 @@ export class LaunchesRestRepository extends LaunchesAbstractRepository {
    * @returns - An observable that emits the launches
    */
   getLaunchesByStatus$(status: LaunchStatus): Observable<LaunchDto[]> {
-    return this.httpClient.get<LaunchDto[]>(`${this.apiUrl}?q=${status}`);
+    const forcedDelay = '&delay=1000';
+    const forcedStatus = ''; //
+    const forcedEmpty = '';
+
+    const url = `${this.baseUrl}?q=${status}${forcedEmpty}${forcedDelay}${forcedStatus}`;
+
+    return this.httpClient.get<LaunchDto[]>(`${url}`);
   }
 }
