@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AboutService } from './about.service';
+import { LogService } from '@app/services/log.service';
 
 @Component({
   templateUrl: './about.page.html',
@@ -8,7 +9,9 @@ import { AboutService } from './about.service';
 export class AboutPage {
   aboutInfo: string;
 
-  constructor(private readonly aboutService: AboutService) {
+  constructor(private readonly aboutService: AboutService, private readonly logService: LogService) {
     this.aboutInfo = this.aboutService.getAboutInfo();
+
+    this.logService.log('[About] loaded')
   }
 }
