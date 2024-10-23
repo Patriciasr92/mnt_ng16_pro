@@ -5,13 +5,16 @@ import { LogService } from '@app/services/log.service';
 @Component({
   templateUrl: './about.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [LogService],
 })
 export class AboutPage {
   aboutInfo: string;
 
-  constructor(private readonly aboutService: AboutService, private readonly logService: LogService) {
+  constructor(
+    private readonly aboutService: AboutService,
+    private readonly logService: LogService,
+  ) {
     this.aboutInfo = this.aboutService.getAboutInfo();
-
-    this.logService.log('[About] loaded')
+    this.logService.log('AboutPage loaded');
   }
 }

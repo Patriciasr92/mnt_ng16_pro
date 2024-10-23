@@ -1,29 +1,37 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-
-// Para inyectar un tipo primitivo (que no este en una clase) hay que generar el token de otra manera
+/**
+ * Injection Token for the Log Source, used to identify the source of the log
+ */
 export const LOG_SOURCE = new InjectionToken<string>('LOG_SOURCE');
 
+/**
+ * Log Service, logs messages to the console
+ * @param source - The source of the log, defaults to 'Unknown'
+ */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LogService {
+  //source = 'AstroBookings';
 
-  // Inyectamos el tipo primitivo
-  constructor(@Optional() @Inject(LOG_SOURCE) private source: string) {  //con el Optional te pueden instanciar sin ese valor
-    this.source = source || 'unknown'; // Si no tengo valor le pongo unknown por defecto
+  constructor(@Optional() @Inject(LOG_SOURCE) private source: string) {
+    this.source = source || 'Unknown';
   }
 
-  log(message: string): void{
-    console.log(`[${this.source}] ${message}`)
-  }
-  
-  error(message: string): void{
-    console.error(`[${this.source}] ${message}`)
+  log(message: string): void {
+    console.log(`[${this.source}] ${message}`);
   }
 
-  warn(message: string): void{
-    console.warn(`[${this.source}] ${message}`)
+  error(message: string | Error): void {
+    try {
+      const errorJson = JSON.stringify(message);
+      console.error(`[${this.source}] ${errorJson}`);
+    } catch (error) {
+      console.error(`[${this.source}] ${message}`);
+    }
   }
 
-
+  warn(message: string): void {
+    console.warn(`[${this.source}] ${message}`);
+  }
 }
